@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_mic"
+        android:shortcutId="voice"
+        android:shortcutShortLabel="@string/shortcut_voice">
+        <intent
+            android:action="com.pla.perekam.START_VOICE"
+            android:targetClass="com.pla.perekam.MainActivity"
+            android:targetPackage="com.pla.perekam" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_screen"
+        android:shortcutId="screen"
+        android:shortcutShortLabel="@string/shortcut_screen">
+        <intent
+            android:action="com.pla.perekam.START_SCREEN"
+            android:targetClass="com.pla.perekam.MainActivity"
+            android:targetPackage="com.pla.perekam" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_pause"
+        android:shortcutId="pause"
+        android:shortcutShortLabel="@string/shortcut_pause">
+        <intent
+            android:action="com.pla.perekam.TOGGLE_PAUSE"
+            android:targetClass="com.pla.perekam.MainActivity"
+            android:targetPackage="com.pla.perekam" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_call"
+        android:shortcutId="call"
+        android:shortcutShortLabel="@string/shortcut_call">
+        <intent
+            android:action="com.pla.perekam.START_CALL"
+            android:targetClass="com.pla.perekam.MainActivity"
+            android:targetPackage="com.pla.perekam" />
+    </shortcut>
+</shortcuts>
