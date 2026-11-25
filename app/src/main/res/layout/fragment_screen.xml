@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Halaman 2 dari 3: Perekam layar" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Layar: tidak merekam." />
+
+        <Button
+            android:id="@+id/mainAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_screen" />
+
+        <Button
+            android:id="@+id/stopAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/listAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_screen_list" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pengaturan perekam layar" />
+
+        <CheckBox
+            android:id="@+id/recordMic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="58dp"
+            android:text="@string/screen_audio"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_resolution" />
+
+        <Spinner
+            android:id="@+id/resolution"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saat mulai, Android menampilkan dialog izin tangkapan layar. Pilih seluruh layar bila ingin merekam semua aplikasi. Konten yang dilindungi sistem bisa tampak hitam." />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pintasan cepat" />
+
+        <Button
+            android:id="@+id/addVoiceTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_voice_tile" />
+
+        <Button
+            android:id="@+id/addScreenTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_screen_tile" />
+
+        <Button
+            android:id="@+id/addPauseTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_pause_tile" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_help" />
+
+        <Button
+            android:id="@+id/battery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_button" />
+
+        <Button
+            android:id="@+id/appInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_body" />
+    </LinearLayout>
+</ScrollView>
