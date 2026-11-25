@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Halaman 3 dari 3: Perekam panggilan" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perekam panggilan" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Panggilan: tidak merekam." />
+
+        <Button
+            android:id="@+id/mainAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_call" />
+
+        <Button
+            android:id="@+id/stopAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/listAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_call_list" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_settings" />
+
+        <Switch
+            android:id="@+id/autoMaster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/auto_master"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/permanentNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/permanent_notification"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/autoCellular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/auto_cellular"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/autoWhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/auto_whatsapp"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/autoBusiness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/auto_business"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/autoSpeaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/auto_speaker"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/contactName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/contact_name"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/forceCommunication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/force_communication"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/announce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/announce"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/vibrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:text="@string/vibrate"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/source_title" />
+
+        <Spinner
+            android:id="@+id/source"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gain_title" />
+
+        <Spinner
+            android:id="@+id/gain"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/noise_title" />
+
+        <Spinner
+            android:id="@+id/noise"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bass_title" />
+
+        <Spinner
+            android:id="@+id/bass"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_title" />
+
+        <Spinner
+            android:id="@+id/autoDelete"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Izin dan layanan" />
+
+        <TextView
+            android:id="@+id/permissionStatus"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/permissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/permissions" />
+
+        <Button
+            android:id="@+id/accessibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/accessibility_whatsapp" />
+
+        <Button
+            android:id="@+id/resetAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_audio" />
+
+        <Button
+            android:id="@+id/addCallShortcut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_call_shortcut" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_help_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_help_body" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pintasan cepat" />
+
+        <Button
+            android:id="@+id/addVoiceTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_voice_tile" />
+
+        <Button
+            android:id="@+id/addScreenTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_screen_tile" />
+
+        <Button
+            android:id="@+id/addPauseTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_pause_tile" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_help" />
+
+        <Button
+            android:id="@+id/battery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_button" />
+
+        <Button
+            android:id="@+id/appInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_body" />
+
+        <TextView
+            style="@style/SectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quick_help_title" />
+
+        <TextView
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quick_help_body" />
+    </LinearLayout>
+</ScrollView>
