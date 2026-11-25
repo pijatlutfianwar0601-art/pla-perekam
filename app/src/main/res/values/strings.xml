@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pla perekam</string>
+    <string name="tab_voice">1. Perekam suara</string>
+    <string name="tab_screen">2. Perekam layar</string>
+    <string name="tab_call">3. Perekam panggilan</string>
+
+    <string name="tile_voice">Rekam suara</string>
+    <string name="tile_screen">Rekam layar</string>
+    <string name="tile_pause">Jeda rekaman</string>
+
+    <string name="start_voice">Mulai rekam suara</string>
+    <string name="start_screen">Mulai rekam layar</string>
+    <string name="start_call">Mulai rekam manual</string>
+    <string name="pause">Jeda rekaman</string>
+    <string name="resume">Lanjutkan rekaman</string>
+    <string name="stop">Berhenti dan simpan</string>
+
+    <string name="recording_list">Daftar rekaman</string>
+    <string name="open_voice_list">Buka daftar rekaman suara</string>
+    <string name="open_screen_list">Buka daftar rekaman layar</string>
+    <string name="open_call_list">Buka daftar rekaman panggilan</string>
+
+    <string name="add_voice_tile">Tambahkan ubin Rekam suara</string>
+    <string name="add_screen_tile">Tambahkan ubin Rekam layar</string>
+    <string name="add_pause_tile">Tambahkan ubin Jeda rekaman</string>
+    <string name="add_call_shortcut">Tambahkan pintasan Rekam panggilan ke Pengaturan Cepat</string>
+
+    <string name="battery_title">Agar rekaman tidak terhenti</string>
+    <string name="battery_help">Sebagian HP menghentikan aplikasi di latar belakang. Izinkan aplikasi ini berjalan tanpa pembatasan baterai, dan aktifkan mulai otomatis di info aplikasi bila ada.</string>
+    <string name="battery_button">Izinkan tanpa pembatasan baterai</string>
+    <string name="app_info">Buka info aplikasi</string>
+
+    <string name="permissions">Beri izin yang dibutuhkan</string>
+    <string name="accessibility_whatsapp">Aktifkan layanan aksesibilitas untuk WhatsApp</string>
+    <string name="reset_audio">Setel ulang mode audio (bila suara pembaca layar tetap kecil)</string>
+
+    <string name="call_settings">Pengaturan perekam panggilan</string>
+    <string name="auto_master">Rekam otomatis. Jika dimatikan, rekaman dimulai dengan tombol di notifikasi atau di halaman ini</string>
+    <string name="permanent_notification">Notifikasi pintasan permanen dengan tombol mulai atau hentikan rekam</string>
+    <string name="auto_cellular">Rekam panggilan seluler otomatis</string>
+    <string name="auto_whatsapp">Rekam panggilan WhatsApp otomatis</string>
+    <string name="auto_business">Rekam panggilan WhatsApp Bisnis otomatis</string>
+    <string name="auto_speaker">Nyalakan pengeras suara otomatis saat merekam, agar suara lawan bicara ikut terekam</string>
+    <string name="contact_name">Namai rekaman WhatsApp dengan nama kontak atau nomor dari layar panggilan (membaca teks layar panggilan, bisa keliru)</string>
+    <string name="force_communication">Paksa mode audio komunikasi saat merekam panggilan seluler. Membantu mikrofon tidak dibisukan, tetapi di sebagian HP bisa mengganggu suara panggilan; matikan bila suara panggilan terputus-putus</string>
+    <string name="announce">Umumkan mulai dan selesai rekaman lewat TalkBack</string>
+    <string name="vibrate">Getar saat rekaman mulai dan selesai</string>
+
+    <string name="source_title">Sumber suara panggilan</string>
+    <string name="gain_title">Penguatan suara rekaman panggilan (gain)</string>
+    <string name="noise_title">Penjernih suara rekaman panggilan</string>
+    <string name="bass_title">Penguat bass rekaman panggilan</string>
+    <string name="delete_title">Hapus rekaman panggilan lama otomatis</string>
+
+    <string name="screen_audio">Rekam suara mikrofon bersama video layar</string>
+    <string name="screen_resolution">Ukuran video layar</string>
+
+    <string name="shortcut_voice">Rekam suara</string>
+    <string name="shortcut_screen">Rekam layar</string>
+    <string name="shortcut_pause">Jeda / lanjut</string>
+    <string name="shortcut_stop">Berhenti</string>
+    <string name="shortcut_call">Rekam panggilan</string>
+
+    <string name="accessibility_description">Membaca layar panggilan WhatsApp dan WhatsApp Bisnis untuk memulai serta menghentikan rekaman atas pilihan pengguna. Layanan ini tidak mengirim isi layar ke internet.</string>
+
+    <string name="help_title">Bantuan singkat</string>
+    <string name="help_body">Aplikasi ini punya tiga halaman. Halaman 1 adalah perekam suara, halaman 2 perekam layar, halaman 3 perekam panggilan. Pindah halaman lewat tiga tombol di bagian atas, atau geser layar ke kiri dan kanan. Tombol utama berganti fungsi: mulai merekam, jeda, lalu lanjutkan. Tombol berhenti dan simpan muncul saat rekaman berlangsung. Saat merekam, kontrol juga tersedia di notifikasi. Rekaman disimpan di folder Recordings pada penyimpanan internal.</string>
+
+    <string name="call_help_title">Bantuan perekam panggilan</string>
+    <string name="call_help_body">Langkah awal: tekan Beri izin yang dibutuhkan lalu izinkan semuanya. Untuk WhatsApp dan WhatsApp Bisnis, aktifkan layanan aksesibilitas, pilih pla perekam, lalu hidupkan. Jika diblokir pada Android 13 ke atas: Pengaturan, Aplikasi, pla perekam, menu tiga titik, Izinkan setelan terbatas. Android tidak mengizinkan aplikasi biasa mengambil suara lawan bicara langsung, jadi rekaman memakai mikrofon dan suara lawan bicara terekam bila pengeras suara menyala. Hasil berbeda antar merek dan versi Android; coba sumber suara lain bila senyap. Rekaman berhenti sendiri saat panggilan selesai bila sistem mendeteksinya. Nama berkas memakai nama kontak atau nomor bila tersedia. Hasil juga disalin otomatis ke penyimpanan internal, folder Recordings, PerekamPanggilan.</string>
+
+    <string name="quick_help_title">Pintasan cepat tanpa membuka aplikasi</string>
+    <string name="quick_help_body">Ubin pengaturan cepat: Rekam suara, Rekam layar, dan Jeda rekaman. Ketuk ubin Rekam suara untuk mulai, dan ketuk lagi untuk berhenti dan simpan. Rekam layar pertama kali memerlukan izin tangkapan layar dari sistem. Ubin Jeda rekaman menjeda dan melanjutkan rekaman yang sedang berjalan. Pintasan layar beranda: tekan lama ikon aplikasi, lalu pilih Rekam suara, Rekam layar, Jeda atau lanjut, atau Berhenti.</string>
+</resources>
