@@ -21,4 +21,24 @@ class ScreenTileService : TileService() {
 
     override fun onClick() {
         if (RecorderService.running && RecorderService.activeType == RecordingStore.SCREEN) {
-            Re
+            RecorderService.stop(this)
+            return
+        }
+
+        val intent = Intent(this, MainActivity::class.java)
+            .setAction(MainActivity.ACTION_SCREEN)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
+        val pending = PendingIntent.getActivity(
+            this, 41, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        if (Build.VERSION.SDK_INT >= 34) {
+            startActivityAndCollapse(pending)
+        } else {
+            @Suppress("DEPRECATION")
+            startActivityAndCollapse(intent)
+        }
+    }
+}
