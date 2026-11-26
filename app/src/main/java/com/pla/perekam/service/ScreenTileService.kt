@@ -25,12 +25,12 @@ class ScreenTileService : TileService() {
             return
         }
 
-        val intent = Intent(this, MainActivity::class.java)
-            .setAction(MainActivity.ACTION_SCREEN)
-            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val launch = Intent(this, MainActivity::class.java)
+        launch.setAction(MainActivity.ACTION_SCREEN)
+        launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         val pending = PendingIntent.getActivity(
-            this, 41, intent,
+            this, 41, launch,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
@@ -38,7 +38,7 @@ class ScreenTileService : TileService() {
             startActivityAndCollapse(pending)
         } else {
             @Suppress("DEPRECATION")
-            startActivityAndCollapse(intent)
+            startActivityAndCollapse(launch)
         }
     }
 }
