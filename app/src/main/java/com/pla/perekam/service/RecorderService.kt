@@ -62,7 +62,6 @@ class RecorderService : Service() {
         @Volatile var running: Boolean = false
             private set
         @Volatile var lastMessage: String = ""
-            private set
 
         fun createChannels(context: Context) {
             val manager = context.getSystemService(NotificationManager::class.java)
@@ -216,6 +215,9 @@ class RecorderService : Service() {
         }
     }
 
+    private fun safe(text: String): String =
+        text.replace(Regex("[^\\p{L}\\p{N}_+.-]"), "_").take(45)
+
     private fun startCall(label: String?, autoStop: Boolean) {
         if (running) {
             if (activeType == RecordingStore.CALL && !label.isNullOrBlank()) {
@@ -269,9 +271,6 @@ class RecorderService : Service() {
             fail(e.message ?: "Perekam panggilan gagal dimulai.")
         }
     }
-
-    private fun safe(text: String): String =
-        text.replace(Regex("[^\\p{L}\\p{N}_+.-]"), "_").take(45)
 
     private fun startScreen(intent: Intent) {
         if (running) {
@@ -552,6 +551,12 @@ class RecorderService : Service() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        val screenPending = PendingIntent.getActivity(
+            this, 32,
+            Intent(this, MainActivity::class.java).setAction(MainActivity.ACTION_SCREEN),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         val n = NotificationCompat.Builder(this, CONTROL_CHANNEL)
             .setSmallIcon(R.drawable.ic_mic)
             .setContentTitle("pla perekam")
@@ -560,13 +565,7 @@ class RecorderService : Service() {
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .addAction(android.R.drawable.ic_btn_speak_now, "Rekam suara", pending(ACTION_START_VOICE, 31))
-            .addAction(android.R.drawable.ic_menu_camera, "Rekam layar",
-                PendingIntent.getActivity(
-                    this, 32,
-                    Intent(this, MainActivity::class.java).setAction(MainActivity.ACTION_SCREEN),
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-                )
-            )
+            .addAction(android.R.drawable.ic_menu_camera, "Rekam layar", screenPending)
             .addAction(android.R.drawable.ic_menu_call, "Rekam panggilan", pending(ACTION_START_CALL, 33))
             .build()
 
