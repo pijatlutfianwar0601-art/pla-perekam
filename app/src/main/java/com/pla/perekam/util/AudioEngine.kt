@@ -2,29 +2,17 @@ package com.pla.perekam.util
 
 import android.content.Context
 import android.media.MediaRecorder
-import android.media.audiofx.BassBoost
-import android.media.audiofx.NoiseSuppressor
 import android.os.Build
 import java.io.File
 
 class AudioEngine(private val context: Context) {
     private var recorder: MediaRecorder? = null
-    private var noiseSuppressor: NoiseSuppressor? = null
-    private var bassBoost: BassBoost? = null
 
-    fun start(file: File, source: Int, gainDb: Int, noise: Boolean, bass: Int) {
+    fun start(file: File, source: Int) {
         stop()
 
-        val preferred = when (source) {
-            1 -> MediaRecorder.AudioSource.VOICE_COMMUNICATION
-            2 -> MediaRecorder.AudioSource.VOICE_RECOGNITION
-            3 -> MediaRecorder.AudioSource.UNPROCESSED
-            4 -> MediaRecorder.AudioSource.VOICE_CALL
-            else -> MediaRecorder.AudioSource.MIC
-        }
-
         val sources = linkedSetOf(
-            preferred,
+            source,
             MediaRecorder.AudioSource.VOICE_RECOGNITION,
             MediaRecorder.AudioSource.MIC
         )
@@ -48,15 +36,11 @@ class AudioEngine(private val context: Context) {
                 r.setAudioEncodingBitRate(128000)
                 r.setOutputFile(file.absolutePath)
                 r.prepare()
-
-                attachEffects(r.audioSessionId, noise, bass)
-
                 r.start()
                 recorder = r
                 return
             } catch (e: Exception) {
                 lastError = e
-                releaseEffects()
                 try { r.reset() } catch (_: Exception) {}
                 try { r.release() } catch (_: Exception) {}
                 file.delete()
@@ -67,25 +51,6 @@ class AudioEngine(private val context: Context) {
             "Tidak bisa membuka sumber suara. Coba sumber lain atau izinkan mikrofon.",
             lastError
         )
-    }
-
-    private fun attachEffects(id: Int, noise: Boolean, bass: Int) {
-        if (id <= 0) return
-
-        if (noise && NoiseSuppressor.isAvailable()) {
-            try {
-                noiseSuppressor = NoiseSuppressor.create(id)?.apply { enabled = true }
-            } catch (_: Exception) {}
-        }
-
-        if (bass > 0) {
-            try {
-                bassBoost = BassBoost(0, id).apply {
-                    setStrength(bass.coerceIn(0, 1000).toShort())
-                    enabled = true
-                }
-            } catch (_: Exception) {}
-        }
     }
 
     fun pause() {
@@ -107,14 +72,6 @@ class AudioEngine(private val context: Context) {
         }
         try { r.reset() } catch (_: Exception) {}
         try { r.release() } catch (_: Exception) {}
-        releaseEffects()
         return ok
-    }
-
-    private fun releaseEffects() {
-        try { noiseSuppressor?.release() } catch (_: Exception) {}
-        try { bassBoost?.release() } catch (_: Exception) {}
-        noiseSuppressor = null
-        bassBoost = null
     }
 }
