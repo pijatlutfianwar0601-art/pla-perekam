@@ -204,7 +204,7 @@ class RecorderService : Service() {
         val engine = AudioEngine(this)
 
         try {
-            engine.start(file, MediaRecorder.AudioSource.MIC, 0, false, 0)
+            engine.start(file, MediaRecorder.AudioSource.MIC)
             audioEngine = engine
             currentFile = file
             activeType = RecordingStore.VOICE
@@ -246,20 +246,7 @@ class RecorderService : Service() {
         val engine = AudioEngine(this)
 
         try {
-            val gain = when (prefs.gain) {
-                1 -> 3
-                2 -> 6
-                3 -> 9
-                else -> 0
-            }
-            val bass = when (prefs.bass) {
-                1 -> 250
-                2 -> 500
-                3 -> 800
-                else -> 0
-            }
-
-            engine.start(file, prefs.source, gain, prefs.noise == 1, bass)
+            engine.start(file, sourceFromPrefs(prefs.source))
             audioEngine = engine
             currentFile = file
             activeType = RecordingStore.CALL
@@ -272,6 +259,16 @@ class RecorderService : Service() {
         }
     }
 
+    private fun sourceFromPrefs(value: Int): Int {
+        return when (value) {
+            1 -> MediaRecorder.AudioSource.VOICE_COMMUNICATION
+            2 -> MediaRecorder.AudioSource.VOICE_RECOGNITION
+            3 -> MediaRecorder.AudioSource.UNPROCESSED
+            4 -> MediaRecorder.AudioSource.VOICE_CALL
+            else -> MediaRecorder.AudioSource.MIC
+        }
+    }
+
     private fun startScreen(intent: Intent) {
         if (running) {
             fail("Hentikan rekaman yang sedang berjalan terlebih dahulu.")
@@ -279,7 +276,7 @@ class RecorderService : Service() {
         }
 
         val resultCode = intent.getIntExtra(EXTRA_RESULT_CODE, 0)
-        val data = if (Build.VERSION.SDK_INT >= 33) {
+        val data: Intent? = if (Build.VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(EXTRA_RESULT_DATA, Intent::class.java)
         } else {
             @Suppress("DEPRECATION")
@@ -307,7 +304,7 @@ class RecorderService : Service() {
         if (!beginForeground(fgsType, "Merekam layar")) return
 
         val file = RecordingStore.newFile(this, RecordingStore.SCREEN)
-        var r: MediaRecorder? = null
+        var recorder: MediaRecorder? = null
 
         try {
             val manager = getSystemService(MediaProjectionManager::class.java)
@@ -329,26 +326,26 @@ class RecorderService : Service() {
             width -= width % 2
             height -= height % 2
 
-            r = if (Build.VERSION.SDK_INT >= 31) MediaRecorder(this) else {
+            recorder = if (Build.VERSION.SDK_INT >= 31) MediaRecorder(this) else {
                 @Suppress("DEPRECATION")
                 MediaRecorder()
             }
 
-            if (withMic) r.setAudioSource(MediaRecorder.AudioSource.MIC)
-            r.setVideoSource(MediaRecorder.VideoSource.SURFACE)
-            r.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            if (withMic) recorder.setAudioSource(MediaRecorder.AudioSource.MIC)
+            recorder.setVideoSource(MediaRecorder.VideoSource.SURFACE)
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             if (withMic) {
-                r.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-                r.setAudioSamplingRate(44100)
-                r.setAudioEncodingBitRate(128000)
-                r.setAudioChannels(1)
+                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                recorder.setAudioSamplingRate(44100)
+                recorder.setAudioEncodingBitRate(128000)
+                recorder.setAudioChannels(1)
             }
-            r.setVideoEncoder(MediaRecorder.VideoEncoder.H264)
-            r.setVideoSize(width, height)
-            r.setVideoFrameRate(30)
-            r.setVideoEncodingBitRate(if (height >= 1080) 8_000_000 else 4_000_000)
-            r.setOutputFile(file.absolutePath)
-            r.prepare()
+            recorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264)
+            recorder.setVideoSize(width, height)
+            recorder.setVideoFrameRate(30)
+            recorder.setVideoEncodingBitRate(if (height >= 1080) 8_000_000 else 4_000_000)
+            recorder.setOutputFile(file.absolutePath)
+            recorder.prepare()
 
             virtualDisplay = mp.createVirtualDisplay(
                 "PLARekamLayar",
@@ -356,19 +353,19 @@ class RecorderService : Service() {
                 height,
                 metrics.densityDpi,
                 DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                r.surface,
+                recorder.surface,
                 null,
                 handler
             )
 
-            r.start()
-            mediaRecorder = r
+            recorder.start()
+            mediaRecorder = recorder
             currentFile = file
             activeType = RecordingStore.SCREEN
             markStarted()
         } catch (e: Exception) {
-            try { r?.reset() } catch (_: Exception) {}
-            try { r?.release() } catch (_: Exception) {}
+            try { recorder?.reset() } catch (_: Exception) {}
+            try { recorder?.release() } catch (_: Exception) {}
             file.delete()
             releaseProjection()
             fail(e.message ?: "Perekam layar gagal dimulai.")
