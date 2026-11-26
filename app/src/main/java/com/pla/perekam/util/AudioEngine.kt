@@ -11,8 +11,6 @@ class AudioEngine(private val context: Context) {
     private var recorder: MediaRecorder? = null
     private var noiseSuppressor: NoiseSuppressor? = null
     private var bassBoost: BassBoost? = null
-    var sessionId: Int = 0
-        private set
 
     fun start(file: File, source: Int, gainDb: Int, noise: Boolean, bass: Int) {
         stop()
@@ -51,18 +49,10 @@ class AudioEngine(private val context: Context) {
                 r.setOutputFile(file.absolutePath)
                 r.prepare()
 
-                sessionId = r.audioSessionId
-                attachEffects(sessionId, noise, bass)
+                attachEffects(r.audioSessionId, noise, bass)
 
                 r.start()
                 recorder = r
-
-                if (gainDb > 0) {
-                    // MediaRecorder tidak menyediakan gain universal.
-                    // Gain diterapkan sebagai metadata catatan; penguatan nyata
-                    // tergantung sumber dan OEM. Tidak mengklaim efek palsu.
-                    file.parentFile?.let { }
-                }
                 return
             } catch (e: Exception) {
                 lastError = e
