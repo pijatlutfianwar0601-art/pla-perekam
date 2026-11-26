@@ -39,7 +39,7 @@ object UiHelper {
             return
         }
 
-        val service = when (kind) {
+        val serviceClass: Class<*> = when (kind) {
             "screen" -> ScreenTileService::class.java
             "pause" -> PauseTileService::class.java
             else -> VoiceTileService::class.java
@@ -51,7 +51,7 @@ object UiHelper {
             else -> activity.getString(R.string.tile_voice)
         }
 
-        val icon = when (kind) {
+        val iconRes = when (kind) {
             "screen" -> R.drawable.ic_screen
             "pause" -> R.drawable.ic_pause
             else -> R.drawable.ic_mic
@@ -60,9 +60,9 @@ object UiHelper {
         try {
             val manager = activity.getSystemService(StatusBarManager::class.java)
             manager.requestAddTileService(
-                ComponentName(activity, service),
+                ComponentName(activity, serviceClass),
                 label,
-                Icon.createWithResource(activity, icon),
+                Icon.createWithResource(activity, iconRes),
                 activity.mainExecutor
             ) { result ->
                 val message = when (result) {
