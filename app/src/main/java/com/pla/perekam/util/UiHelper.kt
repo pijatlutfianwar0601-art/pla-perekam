@@ -20,13 +20,13 @@ object UiHelper {
     }
 
     fun spinner(context: Context, spinner: Spinner, items: List<String>, selected: Int) {
-        spinner.adapter = ArrayAdapter(
+        val adapter = ArrayAdapter(
             context,
             android.R.layout.simple_spinner_item,
             items
-        ).also {
-            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
         spinner.setSelection(selected.coerceIn(0, items.lastIndex))
     }
 
